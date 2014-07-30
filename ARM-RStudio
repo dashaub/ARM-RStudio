@@ -1,0 +1,61 @@
+#!/bin/bash
+#This script installs R and builds RStudio for ARM SamsungChromebooks on Ubuntu 14.04
+
+#Install R
+sudo apt-get update
+sudo apt-get install -y r-base r-base-dev
+
+#Download RStudio source
+wget https://github.com/rstudio/rstudio/tarball/v0.98.978
+tar -xvf v0.98.978
+rm v0.98.978
+
+#Install RStudio build dependencies
+sudo apt-get install -y git
+sudo apt-get install -y build-essential pkg-config fakeroot cmake ant libjpeg62
+sudo apt-get install -y uuid-dev libssl-dev libbz2-dev zlib1g-dev libpam-dev
+sudo apt-get install -y libapparmor1 apparmor-utils libboost-all-dev libpango1.0-dev
+sudo apt-get install -y openjdk-7-jdk
+sudo apt-get install -y cabal-install
+sudo apt-get install -y ghc
+sudo apt-get install -y qt-sdk
+sudo apt-get install -y pandoc
+
+#Run common environment preparation scripts
+cd rstudio-rstudio-21c7e2c/dependencies/common/
+sudo ~/rstudio-rstudio-21c7e2c/dependencies/common/install-common
+~/rstudio-rstudio-21c7e2c/dependencies/common/install-packages
+~/rstudio-rstudio-21c7e2c/dependencies/common/install-cef
+#sudo ~/rstudio-rstudio-21c7e2c/dependencies/common/install-gwt
+#~/rstudio-rstudio-21c7e2c/dependencies/common/install-dictionaries
+#~/rstudio-rstudio-21c7e2c/dependencies/common/install-mathjax
+#maybe run boost as sudo?
+#~/rstudio-rstudio-21c7e2c/dependencies/common/install-boost
+
+#mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc
+#mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc/1.12.3
+mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc-1.12.3
+mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc-1.12.3/linux
+#Note: the script will fail since it cannot find an ARM package for for pandoc
+# but running it is still necessary or else the later cmake configuration will fail
+#~/rstudio-rstudio-21c7e2c/dependencies/common/install-pandoc
+#~/rstudio-rstudio-21c7e2c/dependencies/common/install-packages
+
+#Get Closure Compiler and replace compiler.jar
+cd
+wget https://closure-compiler.googlecode.com/files/compiler-20130823.zip
+unzip compiler-20130823.zip
+rm COPYING README compiler-20130823.zip
+mv compiler.jar ~/rstudio-rstudio-21c7e2c/src/gwt/tools/compiler/compiler.jar
+
+#Configure cmake and build RStudio
+cd ~/rstudio-rstudio-21c7e2c/
+mkdir build
+sudo cmake -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
+sudo make install
+
+#Clean the system of packages used for building
+cd
+sudo apt-get autoremove -y cabal-install  ghc openjdk-7-jdk pandoc libboost-all-dev
+sudo rm -r -f rstudio-rstudio-21c7e2c
+sudo apt-get autoremove -y
