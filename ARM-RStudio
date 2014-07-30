@@ -6,6 +6,7 @@ sudo apt-get update
 sudo apt-get install -y r-base r-base-dev
 
 #Download RStudio source
+cd
 wget https://github.com/rstudio/rstudio/tarball/v0.98.978
 tar -xvf v0.98.978
 rm v0.98.978
