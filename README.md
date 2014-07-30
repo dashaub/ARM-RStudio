@@ -24,7 +24,7 @@ There are none. The downside of running ARM hardware is less support for softwar
 
 Why does this take up so much diskspace?
 ------------------------------------------
-Chromebooks are great hardware for browsing the internet, but they don't come with the largest drives. Disk space comes at a premium. RStudio itself requires the heavy qt-sdk package (~500mb), and the build process requires several other large packages. The script tries to remove these packages after the install, but the disk cost is still high. Plan have at least xxxxxxxxxxxxxxmb free space before installing. After the unneded packages are removed, RStudio (including installing R if you don't already have it) occupies around xxxxxxxxxxxxxxxxxxxmb. A future project will try to build RStudio Server for the Chromebook so that qt-sdk is not required, thereby saving you precious diskspace and allowing access to RStudio through Chrome OS!
+Chromebooks are great hardware for browsing the internet, but they don't come with the largest drives. Disk space comes at a premium. RStudio itself requires the heavy qt-sdk package (~500mb), and the build process requires several other large packages. The script tries to remove these packages after the install, but the disk cost is still high. Plan have at least 4.4GB free space before installing. After the unneded packages are removed, RStudio (including installing R if you don't already have it) occupies around 1.8GB. A future project will try to build RStudio Server for the Chromebook so that qt-sdk is not required, thereby saving you precious diskspace and allowing access to RStudio through Chrome OS!
 
 Why is this so slow to install?
 --------------------------------
