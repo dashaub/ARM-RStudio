@@ -1,15 +1,17 @@
 #!/bin/bash
-#This script installs R and builds RStudio for ARM SamsungChromebooks on Ubuntu 14.04
+#This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 14.04
 
 #Install R
 sudo apt-get update
 sudo apt-get install -y r-base r-base-dev
 
 #Download RStudio source
+#Set RStudio version
+VERS=v0.98.982
 cd
-wget https://github.com/rstudio/rstudio/tarball/v0.98.978
-tar -xvf v0.98.978
-rm v0.98.978
+wget https://github.com/rstudio/rstudio/tarball/$VERS
+mkdir rstudio-$VERS && tar xvf $VERS -C rstudio-$VERS --strip-components 1
+rm $VERS
 
 #Install RStudio build dependencies
 sudo apt-get install -y git
@@ -23,40 +25,30 @@ sudo apt-get install -y qt-sdk
 sudo apt-get install -y pandoc
 
 #Run common environment preparation scripts
-cd rstudio-rstudio-21c7e2c/dependencies/common/
-sudo ~/rstudio-rstudio-21c7e2c/dependencies/common/install-common
-~/rstudio-rstudio-21c7e2c/dependencies/common/install-packages
-~/rstudio-rstudio-21c7e2c/dependencies/common/install-cef
-#sudo ~/rstudio-rstudio-21c7e2c/dependencies/common/install-gwt
-#~/rstudio-rstudio-21c7e2c/dependencies/common/install-dictionaries
-#~/rstudio-rstudio-21c7e2c/dependencies/common/install-mathjax
-#maybe run boost as sudo?
-#~/rstudio-rstudio-21c7e2c/dependencies/common/install-boost
-
-#mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc
-#mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc/1.12.3
-mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc-1.12.3
-mkdir ~/rstudio-rstudio-21c7e2c/dependencies/common/pandoc-1.12.3/linux
-#Note: the script will fail since it cannot find an ARM package for for pandoc
-# but running it is still necessary or else the later cmake configuration will fail
-#~/rstudio-rstudio-21c7e2c/dependencies/common/install-pandoc
-#~/rstudio-rstudio-21c7e2c/dependencies/common/install-packages
+cd rstudio-$VERS/dependencies/common/
+mkdir ~/rstudio-$VERS/dependencies/common/pandoc
+cd ~/rstudio-$VERS/dependencies/common/
+./install-gwt
+./install-dictionaries
+./install-mathjax
+./install-boost
+./install-packages
 
 #Get Closure Compiler and replace compiler.jar
 cd
-wget https://closure-compiler.googlecode.com/files/compiler-20130823.zip
-unzip compiler-20130823.zip
-rm COPYING README compiler-20130823.zip
-mv compiler.jar ~/rstudio-rstudio-21c7e2c/src/gwt/tools/compiler/compiler.jar
+wget http://dl.google.com/closure-compiler/compiler-latest.zip
+unzip compiler-latest.zip
+rm COPYING README.md compiler-latest.zip
+sudo mv compiler.jar ~/rstudio-$VERS/src/gwt/tools/compiler/compiler.jar
 
 #Configure cmake and build RStudio
-cd ~/rstudio-rstudio-21c7e2c/
+cd ~/rstudio-$VERS/
 mkdir build
 sudo cmake -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
 sudo make install
 
 #Clean the system of packages used for building
 cd
-sudo apt-get autoremove -y cabal-install  ghc openjdk-7-jdk pandoc libboost-all-dev
-sudo rm -r -f rstudio-rstudio-21c7e2c
+sudo apt-get autoremove -y cabal-install ghc openjdk-7-jdk pandoc libboost-all-dev
+sudo rm -r -f rstudio-$VERS
 sudo apt-get autoremove -y
