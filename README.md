@@ -32,3 +32,6 @@ Why is this so slow to install?
 --------------------------------
 See above. You will likely have to download ~1 GB of files from the Ubuntu repos and other websources, so care should be taken if you are on a slow or metered connection. In particular, the final step of building and installing RStudio using Java only utilizes a single core and takes several hours. Additionally, the building process can use a significant amount of memory, so you might want to start it on a system without other applications open and allow the script to run ovenight. If everything runs well you will have RStudio by morning and not a paperweight. Needless to say, you should perform a backup (but you do that all the time anyway, right?).
 
+Known issues
+------------------
+* Converting RMarkdown to PDF/HTML/DOC using Knitr fails. This results from using the old pandoc version 1.12.2 while Knitr requires at least pandoc 1.12.3. Ubuntu 14.10 should have the newer pandoc 1.12.4, but in the meantime a workaround can be made by using the R package "markdown" from CRAN to convert the markdown file to HTML.
