@@ -24,6 +24,11 @@ Why not just install RStudio from the repos or download the binary?
 -------------------------------------
 There are none. The downside of running ARM hardware is less support for software packages and trouble porting some software to the architecture. Through a long process of trial and error, this script was hacked together to get RStudio to build using mostly the Ubuntu repos and a few independent downloads. The script will install RStudio 0.98.978 but may become broken with newer release of the software.
 
+Will this work with RStudio Server instead of the Desktop edition?
+------------------------------------------------------------------------------------------
+Yes! See https://github.com/jrowen/ARM-rstudio-server
+
+
 Why does this take up so much diskspace?
 ------------------------------------------
 Chromebooks are great hardware for browsing the internet, but they don't come with the largest drives. Disk space comes at a premium. RStudio itself requires the heavy qt-sdk package (~500mb), and the build process requires several other large packages. The script tries to remove these packages after the install, but the disk cost is still high. Plan to have at least 4.4GB free space before installing. After the packages used for building are removed, RStudio (including installing R if you don't already have it) occupies around 1.8GB. A future project will try to build RStudio Server for the Chromebook so that qt-sdk is not required, thereby saving you precious diskspace and allowing access to RStudio through Chrome OS!
