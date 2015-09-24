@@ -28,6 +28,10 @@ Will this work with RStudio Server instead of the Desktop edition?
 ------------------------------------------------------------------------------------------
 Yes! See https://github.com/jrowen/ARM-rstudio-server
 
+Why does this install an old version of RStudio?
+----------------------------------------------------------------
+The script will by install version 0.98.982. This was the most recent version available when the project was completed. Newer releases <i> might </i> work fine. If you are feeling adventerous, you can change the value of `VERS` in the script. There is no guarantee this will work, so you have been warned.
+
 
 Why does this take up so much diskspace?
 ------------------------------------------
