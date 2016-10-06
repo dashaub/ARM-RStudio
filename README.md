@@ -9,16 +9,16 @@ Download the zip file containing ARM-RStudio and extract its contents. Launch a 
 
   What is this?
 -----------------
-This script installs R and compiles RStudio Desktop for ARM architecture. It was specifically written for the Samsung Chromebook running Ubuntu 14.04 LTS using Crouton but <i>should</i> work for other ARM hardware on Ubuntu. The code can also serve as a guide if you running a different Linux distribution on ARM hardware, but the package versions could present issues. Testers wanted!
+This script installs R and compiles RStudio Desktop for ARM architecture. It was specifically written for the Samsung Chromebook running Ubuntu 14.04 LTS using Crouton but <i>should</i> work for other ARM hardware on Ubuntu. The code can also serve as a guide if you running a different GNU/Linux distribution on ARM hardware, but the package versions could present issues. Testers wanted!
 
 What is R? RStudio? ARM? Ubuntu? Chromebook? Crouton?
 -----------------------------------------------------------------------------------------------------
 * [R](http://cran.r-project.org/) is a statistical scripting language and open source software that is very useful for data analysis.
 * [RStudio](http://www.rstudio.com/) is a great GUI and IDE for R.
 * [ARM](https://en.wikipedia.org/wiki/ARM_architecture) is a processor architecture popular in mobile devices that achieves great energy efficiency. However, it is not common in desktop/notebook computers, so common applications that work for x86 32- and 64-bit processors will not run. This creates some difficulties for desktop/notebook users wishing to run some applications.
-* [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu_(operating_system)) is an open source operating system and one of the most popular distributions of [Linux](https://en.wikipedia.org/wiki/Linux).
-* [Chromebooks](https://en.wikipedia.org/wiki/Chromebook) are lightweight notebooks that run Google's Chrome OS. In their configuration out of the box they allow only basic web browsing, but thanks to Crouton users can turn them into a fully-functional Linux OS.
-* [Crouton](https://github.com/dnschneid/crouton) is a powerful tool from [David Schneider](https://github.com/dnschneid) that allows a user to run Linux parallel to Chrome OS, including on Chromebooks with ARM hardware.
+* [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu_(operating_system)) is an open source operating system and one of the most popular distributions of [GNU/Linux](https://en.wikipedia.org/wiki/Linux).
+* [Chromebooks](https://en.wikipedia.org/wiki/Chromebook) are lightweight notebooks that run Google's Chrome OS. In their configuration out of the box they allow only basic web browsing, but thanks to Crouton users can turn them into a fully-functional GNU/Linux OS.
+* [Crouton](https://github.com/dnschneid/crouton) is a powerful tool from [David Schneider](https://github.com/dnschneid) that allows a user to run GNU/Linux on top of Chrome OS, including on Chromebooks with ARM hardware.
 
 Why not just install RStudio from the repos or download the binary?
 -------------------------------------
@@ -30,8 +30,11 @@ Yes! See https://github.com/jrowen/ARM-rstudio-server
 
 Why does this install an old version of RStudio?
 ----------------------------------------------------------------
-The script will by install version 0.98.982. This was the most recent version available when the project was completed. Newer releases <i> might </i> work fine. If you are feeling adventerous, you can change the value of `VERS` in the script. There is no guarantee this will work, so you have been warned.
+The script will by default install version 0.98.982. This was the most recent version available when the project was completed. Newer releases <i> might </i> work fine. If you are feeling adventerous, you can change the value of `VERS` in the script. There is no guarantee this will work, so you have been warned.
 
+Will this script work on a different version of Ubuntu? How about Debian?
+----------------------------------------------------------------
+Maybe. Feel free to test it and let me know. If I get new ARM hardware running a different OS I might try it out as well.
 
 Why does this take up so much diskspace?
 ------------------------------------------
@@ -44,3 +47,4 @@ See above. You will likely have to download ~1 GB of files from the Ubuntu repos
 Known issues
 ------------------
 * Converting RMarkdown to PDF/HTML/DOC using Knitr fails. This results from using the old pandoc version 1.12.2 while Knitr requires at least pandoc 1.12.3. Ubuntu 14.10 should have the newer pandoc 1.12.4, but in the meantime a workaround can be made by using the R package "markdown" from CRAN to convert the markdown file to HTML.
+* Autoremove and cleanup after install removes some packages you might have had installed on your system before running the script. This really is a dirty approach, but I wrote the script to suit my needs and remove packages that I was not interested in keeping. Please do check the last few lines of the script to make sure you're not uninstalling a package that you want to keep.
