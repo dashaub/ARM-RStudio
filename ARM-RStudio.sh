@@ -49,6 +49,6 @@ sudo make install
 
 #Clean the system of packages used for building
 cd
-sudo apt-get autoremove -y cabal-install ghc openjdk-7-jdk pandoc libboost-all-dev
+sudo apt-get autoremove -y cabal-install ghc pandoc libboost-all-dev
 sudo rm -r -f rstudio-$VERS
 sudo apt-get autoremove -y
