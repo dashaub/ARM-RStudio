@@ -3,6 +3,7 @@ dist: trusty
 language: python
 
 install:
+  - sudo chmod a+x ARM-RStudio.sh
   - echo 'Beginning install'
 script:
   - sudo ./ARM-RStudio.sh
