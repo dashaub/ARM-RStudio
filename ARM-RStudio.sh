@@ -39,7 +39,7 @@ cd
 wget http://dl.google.com/closure-compiler/compiler-latest.zip
 unzip compiler-latest.zip
 rm COPYING README.md compiler-latest.zip
-sudo mv compiler.jar ~/rstudio-$VERS/src/gwt/tools/compiler/compiler.jar
+sudo mv closure-compiler*.jar ~/rstudio-$VERS/src/gwt/tools/compiler/compiler.jar
 
 #Configure cmake and build RStudio
 cd ~/rstudio-$VERS/
