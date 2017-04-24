@@ -4,7 +4,7 @@ Compile RStudio Desktop for Ubuntu 14.04 LTS on ARM Samsung Chromebook
 
 Usage
 -------
-Download the zip file containing ARM-RStudio and extract its contents. Launch a terminal from inside this folder and run `sudo ./ARM-RStudio.sh`. You may need to change the permissions to allow the script to execute, in which case enter `sudo chmod +x ARM-RStudio.sh` before launching the script.
+`git clone` the repo or download the zip file containing ARM-RStudio and extract its contents. Launch a terminal from inside this folder and run `sudo ./ARM-RStudio.sh`. You may need to change the permissions to allow the script to execute, in which case enter `sudo chmod +x ARM-RStudio.sh` before launching the script.
 
 
   What is this?
