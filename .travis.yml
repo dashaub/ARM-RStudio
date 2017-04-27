@@ -1,9 +1,9 @@
 sudo: true
 dist: trusty
-language: python
+language: bash
 
 install:
   - sudo chmod a+x ARM-RStudio.sh
   - echo 'Beginning install'
 script:
-  - sudo travis_wait 40 ./ARM-RStudio.sh
+  - sudo travis_wait 30 ./ARM-RStudio.sh
