@@ -6,4 +6,4 @@ install:
   - sudo chmod a+x ARM-RStudio.sh
   - echo 'Beginning install'
 script:
-  - sudo ./ARM-RStudio.sh
+  - sudo travis_wait 40 ./ARM-RStudio.sh
