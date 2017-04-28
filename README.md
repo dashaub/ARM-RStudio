@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/dashaub/ARM-RStudio.svg?branch=master)](https://travis-ci.org/dashaub/ARM-RStudio)
+
 ARM-RStudio
 ===========
 Compile RStudio Desktop for Ubuntu 14.04 LTS on ARM Samsung Chromebook
