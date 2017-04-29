@@ -1,6 +1,8 @@
 #!/bin/bash
 #This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 14.04
 
+set -e
+
 #Install R
 sudo apt-get update
 sudo apt-get -qq install -y r-base r-base-dev
@@ -50,5 +52,5 @@ sudo make install
 #Clean the system of packages used for building
 cd
 sudo apt-get autoremove -y cabal-install ghc pandoc libboost-all-dev
-sudo rm -r -f rstudio-$VERS
+sudo rm -rf rstudio-$VERS
 sudo apt-get autoremove -y
