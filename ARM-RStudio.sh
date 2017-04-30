@@ -1,8 +1,6 @@
 #!/bin/bash
 #This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 14.04
 
-set -e
-
 #Install R
 sudo apt-get update
 sudo apt-get -qq install -y r-base r-base-dev
