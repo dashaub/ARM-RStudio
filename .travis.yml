@@ -5,6 +5,7 @@ language: bash
 install:
   - sudo chmod a+x ARM-RStudio.sh
   - echo "verbose = off" >> ~/.wgetrc
+  - sed -i 's/^sudo apt-get install /sudo apt-get install -qq /' ARM-RStudio.sh
   - echo 'Beginning install'
 script:
   - travis_wait 30 sudo ./ARM-RStudio.sh
