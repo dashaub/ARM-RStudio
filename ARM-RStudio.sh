@@ -31,7 +31,7 @@ cd ~/rstudio-$VERS/dependencies/common/
 ./install-gwt
 ./install-dictionaries
 ./install-mathjax
-./install-boost > boostlog.log
+./install-boost
 ./install-packages
 
 #Get Closure Compiler and replace compiler.jar
