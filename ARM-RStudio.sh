@@ -1,5 +1,5 @@
 #!/bin/bash
-#This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 14.04
+#This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 16.04
 
 #Install R
 sudo apt-get update
@@ -7,7 +7,7 @@ sudo apt-get install -y r-base r-base-dev
 
 #Download RStudio source
 #Set RStudio version
-VERS=v0.98.982
+VERS=v1.1.423
 cd
 wget https://github.com/rstudio/rstudio/tarball/$VERS
 mkdir rstudio-$VERS && tar xf $VERS -C rstudio-$VERS --strip-components 1
@@ -18,7 +18,7 @@ sudo apt-get install -y git
 sudo apt-get install -y build-essential pkg-config fakeroot cmake ant libjpeg62
 sudo apt-get install -y uuid-dev libssl-dev libbz2-dev zlib1g-dev libpam-dev
 sudo apt-get install -y libapparmor1 apparmor-utils libboost-all-dev libpango1.0-dev
-sudo apt-get install -y openjdk-7-jdk
+sudo apt-get install -y openjdk-8-jdk
 sudo apt-get install -y cabal-install
 sudo apt-get install -y ghc
 sudo apt-get install -y qt-sdk
