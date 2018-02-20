@@ -9,13 +9,14 @@ sudo apt-get install -y r-base r-base-dev wget
 # Download RStudio source
 # Set RStudio version
 VERS=v1.1.423
-cd
+cd ~
 wget https://github.com/rstudio/rstudio/tarball/$VERS
 mkdir rstudio-$VERS && tar xf $VERS -C rstudio-$VERS --strip-components 1
 rm $VERS
 
 # Install dependencies
-sudo rstudio-$VERS/dependencies/linux/install-dependencies-debian
+cd rstudio-$VERS/dependencies/linux
+sudo ./install-dependencies-debian
 
 # Configure cmake and build RStudio
 cd ~/rstudio-$VERS/
