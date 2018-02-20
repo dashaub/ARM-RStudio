@@ -4,7 +4,7 @@ set -e
 
 # Install R
 sudo apt-get update
-sudo apt-get install -y r-base r-base-dev wget
+sudo apt-get install -y r-base r-base-dev wget openjdk-8-jdk checkinstall
 
 # Download RStudio source
 # Set RStudio version
@@ -23,8 +23,8 @@ cd ~/rstudio-$VERS/
 mkdir build
 cd build
 sudo cmake .. -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
-sudo make install
+sudo checkinstall
 
 # Clean the system of packages used for building
 cd ~
-rm -rf rstudio-$VERS
+rm -rf rstudio-$VERS Qt5.4.2
