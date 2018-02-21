@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 14.04/16.04
+# This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 16.04
 set -e
 
 # Install R
@@ -23,8 +23,9 @@ cd ~/rstudio-$VERS/
 mkdir build
 cd build
 sudo cmake .. -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
-sudo checkinstall --pkgname rstudio --pkgversion $VERS -y
+PKG_VERS=$(echo $VERS | sed 's/^v//')
+sudo checkinstall --pkgname rstudio --pkgversion $PKG_VERS -y
 
 # Clean the system of packages used for building
 cd ~
-rm -rf rstudio-$VERS Qt5.4.2
+rm -rf rstudio-$VERS
