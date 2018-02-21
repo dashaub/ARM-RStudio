@@ -23,7 +23,7 @@ cd ~/rstudio-$VERS/
 mkdir build
 cd build
 sudo cmake .. -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
-sudo checkinstall
+sudo checkinstall --pkgname rstudio --pkgversion $VERS -y
 
 # Clean the system of packages used for building
 cd ~
