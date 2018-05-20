@@ -1,5 +1,6 @@
 #!/bin/bash
-#This script installs R and builds RStudio Desktop for ARM Chromebooks running Ubuntu 14.04
+#This script installs R and builds RStudio Desktop for
+# ARM Chromebooks running Ubuntu 14.04
 set -euo pipefail
 
 #Download RStudio source
@@ -42,8 +43,10 @@ sudo mv closure-compiler*.jar "~/rstudio-${VERS}/src/gwt/tools/compiler/compiler
 #Configure cmake and build RStudio
 cd "~/rstudio-${VERS}/"
 mkdir build
-sudo cmake -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
-sudo make install
+cd build
+sudo cmake .. -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release
+PKG_VERS=$(echo "${VERS}" | sed 's/^v//')
+sudo checkinstall --pkgname rstudio --pkgversion "${PKG_VERS}" -y
 
 #Clean the system of packages used for building
 cd

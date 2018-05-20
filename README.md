@@ -1,15 +1,18 @@
+
+[![Build Status](https://travis-ci.org/dashaub/ARM-RStudio.svg?branch=master)](https://travis-ci.org/dashaub/ARM-RStudio)
+
 ARM-RStudio
 ===========
-Compile RStudio Desktop for Ubuntu 14.04 LTS on ARM Samsung Chromebook
+Compile RStudio Desktop for Ubuntu 16.04 LTS on ARM Samsung Chromebook
 
 Usage
 -------
-Download the zip file containing ARM-RStudio and extract its contents. Launch a terminal from inside this folder and run `sudo ./ARM-RStudio.sh`. You may need to change the permissions to allow the script to execute, in which case enter `sudo chmod +x ARM-RStudio.sh` before launching the script.
+`git clone` the repo or download the zip file containing ARM-RStudio and extract its contents. Launch a terminal from inside this folder and run `sudo ./ARM-RStudio.sh`. You may need to change the permissions to allow the script to execute, in which case enter `sudo chmod a+x ARM-RStudio.sh` before launching the script.
 
 
   What is this?
 -----------------
-This script installs R and compiles RStudio Desktop for ARM architecture. It was specifically written for the Samsung Chromebook running Ubuntu 14.04 LTS using Crouton but <i>should</i> work for other ARM hardware on Ubuntu. The code can also serve as a guide if you running a different GNU/Linux distribution on ARM hardware, but the package versions could present issues. Testers wanted!
+This script installs R and compiles RStudio Desktop for ARM architecture. It was specifically written for the Samsung Chromebook running Ubuntu 16.04 LTS using Crouton but <i>should</i> work for other ARM hardware on Ubuntu. The code can also serve as a guide if you running a different GNU/Linux distribution on ARM hardware, but the package versions could present issues. Testers wanted!
 
 What is R? RStudio? ARM? Ubuntu? Chromebook? Crouton?
 -----------------------------------------------------------------------------------------------------
@@ -22,7 +25,7 @@ What is R? RStudio? ARM? Ubuntu? Chromebook? Crouton?
 
 Why not just install RStudio from the repos or download the binary?
 -------------------------------------
-There are none. The downside of running ARM hardware is less support for software packages and trouble porting some software to the architecture. Through a long process of trial and error, this script was hacked together to get RStudio to build using mostly the Ubuntu repos and a few independent downloads. The script will install RStudio 0.98.978 but may become broken with newer release of the software.
+There are none. The downside of running ARM hardware is less support for software packages and trouble porting some software to the architecture. Through a long process of trial and error, this script was hacked together to get RStudio to build using mostly the Ubuntu repos and a few independent downloads. The script will install RStudio **v1.1.423** but may become broken with newer release of the software.
 
 Will this work with RStudio Server instead of the Desktop edition?
 ------------------------------------------------------------------------------------------
@@ -30,7 +33,7 @@ Yes! See https://github.com/jrowen/ARM-rstudio-server
 
 Why does this install an old version of RStudio?
 ----------------------------------------------------------------
-The script will by default install version 0.98.982. This was the most recent version available when the project was completed. Newer releases <i> might </i> work fine. If you are feeling adventerous, you can change the value of `VERS` in the script. There is no guarantee this will work, so you have been warned.
+The script will by default install version 0.98.982. This was the most recent version available when the project was completed. Newer releases *might* work fine. If you are feeling adventerous, you can change the value of `VERS` in the script. There is no guarantee this will work, so you have been warned.
 
 Will this script work on a different version of Ubuntu? How about Debian?
 ----------------------------------------------------------------
@@ -38,7 +41,7 @@ Maybe. Feel free to test it and let me know. If I get new ARM hardware running a
 
 Why does this take up so much diskspace?
 ------------------------------------------
-Chromebooks are great hardware for browsing the internet, but they don't come with the largest drives. Disk space comes at a premium. RStudio itself requires the heavy qt-sdk package (~500mb), and the build process requires several other large packages. The script tries to remove these packages after the install, but the disk cost is still high. Plan to have at least 4.4GB free space before installing. After the packages used for building are removed, RStudio (including installing R if you don't already have it) occupies around 1.8GB. A future project will try to build RStudio Server for the Chromebook so that qt-sdk is not required, thereby saving you precious diskspace and allowing access to RStudio through Chrome OS!
+Chromebooks are great hardware for browsing the internet, but they don't come with the largest drives. Disk space comes at a premium. RStudio itself requires the heavy `qt-sdk` package (~500mb), and the build process requires several other large packages. The script tries to remove these packages after the install, but the disk cost is still high. Plan to have at least 4.4GB free space before installing. After the packages used for building are removed, RStudio (including installing R if you don't already have it) occupies around 1.8GB.
 
 Why is this so slow to install?
 --------------------------------
@@ -47,4 +50,3 @@ See above. You will likely have to download ~1 GB of files from the Ubuntu repos
 Known issues
 ------------------
 * Converting RMarkdown to PDF/HTML/DOC using Knitr fails. This results from using the old pandoc version 1.12.2 while Knitr requires at least pandoc 1.12.3. Ubuntu 14.10 should have the newer pandoc 1.12.4, but in the meantime a workaround can be made by using the R package "markdown" from CRAN to convert the markdown file to HTML.
-* Autoremove and cleanup after install removes some packages you might have had installed on your system before running the script. This really is a dirty approach, but I wrote the script to suit my needs and remove packages that I was not interested in keeping. Please do check the last few lines of the script to make sure you're not uninstalling a package that you want to keep.
