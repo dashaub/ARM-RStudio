@@ -2,7 +2,7 @@ sudo: true
 dist:
   - trusty
 
-language: bash
+language: generic
 
 install:
   - echo "verbose = off" >> ~/.wgetrc
