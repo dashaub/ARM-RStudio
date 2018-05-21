@@ -1,7 +1,6 @@
 sudo: true
 dist:
-    - trusty
-    - xenial
+  - trusty
 
 language: bash
 
