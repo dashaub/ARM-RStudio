@@ -25,7 +25,7 @@ sudo apt-get install -y pandoc
 
 #Run common environment preparation scripts
 cd "rstudio-${VERS}/dependencies/common/"
-mkdir "~/rstudio-${VERS}/dependencies/common/pandoc"
+mkdir -p "~/rstudio-${VERS}/dependencies/common/pandoc"
 cd "~/rstudio-$VERS/dependencies/common/"
 ./install-gwt
 ./install-dictionaries
