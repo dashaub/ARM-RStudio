@@ -1,5 +1,4 @@
-dist:
-  - trusty
+dist: trusty
 
 language: bash
 
@@ -9,4 +8,4 @@ install:
   - sed -i 's/apt-get install/apt-get -qq install/' ARM-RStudio.sh
   - echo 'Beginning install'
 script:
-  - travis_wait 30 sudo ./ARM-RStudio.sh
+  - sudo ./ARM-RStudio.sh
