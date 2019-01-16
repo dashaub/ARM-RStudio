@@ -1,13 +1,12 @@
-sudo: true
 dist:
   - trusty
 
-language: generic
+language: bash
 
 install:
   - echo "verbose = off" >> ~/.wgetrc
   - sed -i 's/install-boost/install-boost > boostlog.log/' ARM-RStudio.sh
-  - sed -i 's/^sudo apt-get install/sudo apt-get -qq install/' ARM-RStudio.sh
+  - sed -i 's/apt-get install/apt-get -qq install/' ARM-RStudio.sh
   - echo 'Beginning install'
 script:
   - travis_wait 30 sudo ./ARM-RStudio.sh

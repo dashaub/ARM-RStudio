@@ -3,7 +3,7 @@
 
 ARM-RStudio
 ===========
-Compile RStudio Desktop for Ubuntu 16.04 LTS on ARM Samsung Chromebook
+Compile RStudio Desktop for Ubuntu 14.04 LTS on ARM Samsung Chromebook
 
 Usage
 -------
@@ -12,7 +12,7 @@ Usage
 
   What is this?
 -----------------
-This script installs R and compiles RStudio Desktop for ARM architecture. It was specifically written for the Samsung Chromebook running Ubuntu 16.04 LTS using Crouton but <i>should</i> work for other ARM hardware on Ubuntu. The code can also serve as a guide if you running a different GNU/Linux distribution on ARM hardware, but the package versions could present issues. Testers wanted!
+This script installs R and compiles RStudio Desktop for ARM architecture. It was specifically written for the Samsung Chromebook running Ubuntu 14.04 LTS using Crouton but <i>should</i> work for other ARM hardware on Ubuntu. The code can also serve as a guide if you running a different GNU/Linux distribution on ARM hardware, but the package versions could present issues. Testers wanted!
 
 What is R? RStudio? ARM? Ubuntu? Chromebook? Crouton?
 -----------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ What is R? RStudio? ARM? Ubuntu? Chromebook? Crouton?
 
 Why not just install RStudio from the repos or download the binary?
 -------------------------------------
-There are none. The downside of running ARM hardware is less support for software packages and trouble porting some software to the architecture. Through a long process of trial and error, this script was hacked together to get RStudio to build using mostly the Ubuntu repos and a few independent downloads. The script will install RStudio **v1.1.423** but may become broken with newer release of the software.
+There are none. The downside of running ARM hardware is less support for software packages and trouble porting some software to the architecture. Through a long process of trial and error, this script was hacked together to get RStudio to build using mostly the Ubuntu repos and a few independent downloads. The script will install RStudio **v0.98.982** but may become broken with newer release of the software.
 
 Will this work with RStudio Server instead of the Desktop edition?
 ------------------------------------------------------------------------------------------
