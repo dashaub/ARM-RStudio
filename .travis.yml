@@ -6,6 +6,7 @@ install:
   - echo "verbose = off" >> ~/.wgetrc
   - sed -i 's/install-boost/install-boost > boostlog.log/' ARM-RStudio.sh
   - sed -i 's/apt-get install/apt-get -qq install/' ARM-RStudio.sh
+  - apt-get install sudo
   - echo 'Beginning install'
 script:
-  - sudo ./ARM-RStudio.sh
+  - ./ARM-RStudio.sh
