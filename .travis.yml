@@ -10,4 +10,5 @@ install:
   - apt-get install -y sudo
   - echo 'Beginning install'
 script:
-  - ./ARM-RStudio.sh
+  - # travis disabled VM and containers with sudo, so this script can't run now
+  - #sudo travis wait 30 ./ARM-RStudio.sh
