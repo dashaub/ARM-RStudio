@@ -7,7 +7,6 @@ install:
   - echo "verbose = off" >> ~/.wgetrc
   - sed -i 's/install-boost/install-boost > boostlog.log/' ARM-RStudio.sh
   - sed -i 's/apt-get install/apt-get -qq install/' ARM-RStudio.sh
-  - apt-get install -y sudo
   - echo 'Beginning install'
 script:
   - # travis disabled VM and containers with sudo, so this script can't run now
