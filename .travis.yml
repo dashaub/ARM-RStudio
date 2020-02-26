@@ -10,4 +10,4 @@ install:
   - echo 'Beginning install'
 script:
   - # travis disabled VM and containers with sudo, so this script can't run now
-  - #sudo travis wait 30 ./ARM-RStudio.sh
+  - sudo travis wait 30 ./ARM-RStudio.sh
