@@ -37,10 +37,10 @@ BUILD_DIR="${HOME}"
 
 echo "Downloading RStudio ${VERS}"
 cd "${BUILD_DIR}"
-wget "https://github.com/rstudio/rstudio/archive/${VERS}"
+wget "https://github.com/rstudio/rstudio/archive/refs/tags/${VERS}.tar.gz"
 mkdir "rstudio-${VERS}"
-tar xvf "${VERS}" -C "rstudio-${VERS}" --strip-components 1
-rm "${VERS}"
+tar xvf "${VERS}.tar.gz" -C "rstudio-${VERS}" --strip-components 1
+rm "${VERS}.tar.gz"
 
 #Run common environment preparation scripts
 cd "${BUILD_DIR}/rstudio-${VERS}/dependencies/common/"
